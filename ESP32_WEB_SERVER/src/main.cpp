@@ -22,6 +22,9 @@ TaskHandle_t Task1;
 #define DIR1_R_PIN 23
 #define DIR2_R_PIN 21
 
+#define SSID "TP-Link_Pear"
+#define PASS "03102003"
+
 typedef struct struct_message
 {
   uint8_t setup_status = 0;
@@ -164,7 +167,7 @@ void setup()
   pinMode(LED_ESP, OUTPUT);
 
   // _wifi.wifi_begin("TP-Link_Pear", "03102003");
-  _wifi.wifi_begin("Pear", "03102003");
+  _wifi.wifi_begin(SSID, PASS);
   xTaskCreate(status_wifi, "status_wifi", 1023, NULL, 1, NULL);
 
   webServer.on("/", mainpase);
