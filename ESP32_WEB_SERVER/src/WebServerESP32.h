@@ -46,6 +46,7 @@
                 padding-right: 10%;
                 /* margin-left: 10%; */
                 background-color: lightslategray;
+                border-radius: 10px;
                 box-shadow: 15px 8px 8px rgba(12, 6, 6, 0.5);
             }
 
@@ -237,13 +238,6 @@
             <div id="header">
                 <div id="logo_header">
                     <h1>ESP32 Control Panel</h1>
-                </div>
-                <div id="lish_header">
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="Trang_van_de.html" class="active">Issues</a></li>
-                        <li><a href="Trang_lien_he.html">Contact</a></li>
-                    </ul>
                 </div>
             </div>
 
