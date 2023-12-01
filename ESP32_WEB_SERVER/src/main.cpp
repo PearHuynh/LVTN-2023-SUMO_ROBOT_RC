@@ -22,7 +22,7 @@ TaskHandle_t Task1;
 #define DIR1_R_PIN 23
 #define DIR2_R_PIN 21
 
-#define SSID "TP-Link_Pear"
+#define SSID "Pear"
 #define PASS "03102003"
 
 typedef struct struct_message
