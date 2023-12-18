@@ -8,14 +8,14 @@
 #define SV_LEFT 0
 #define SV_RIGHT 1
 
-// uint8_t broadcastAddress[] = {0xC4, 0xDE, 0xE2, 0x0E, 0xCE, 0x08}; // Add Sender =   C4:DE:E2:0E:CE:08
-uint8_t broadcastAddress[] = {0xC4, 0xDE, 0xE2, 0x0E, 0xCE, 0x08}; // Add Sender flipper =   C4:DE:E2:0E:CE:08
+uint8_t broadcastAddress[] = {0xFC, 0xB4, 0x67, 0x51, 0x05, 0xD8};
+// uint8_t broadcastAddress[] = {0xC4, 0xDE, 0xE2, 0x0E, 0xCE, 0x08}; // Add Sender flipper =   C4:DE:E2:0E:CE:08
 
 #define relay_pin IO_18
 #define key_pin IO_32
 
-#define SV_left_pin IO_14
-#define SV_right_pin IO_18
+#define SV_left_pin IO_13
+#define SV_right_pin IO_14
 
 /*--------------------------------------------------------------------//
   *  Structure example to receive data
@@ -69,7 +69,7 @@ uint8_t buzzer_warning = 1;
 Servo servo1;
 Servo servo2;
 const uint8_t channal_Servo1 = 0;
-const uint8_t channal_Servo2 = 1;
+const uint8_t channal_Servo2 = 2;
 
 void buzzer(uint8_t pinBuzzer, int delay_s)
 {
@@ -109,7 +109,7 @@ void Setup_servo(uint8_t sv1_pin, uint8_t sv2_pin)
   servo2.attach(sv2_pin, channal_Servo2);
 
   Set_Servo_Position(SV_LEFT, 0);
-  Set_Servo_Position(SV_RIGHT, 180);
+  Set_Servo_Position(SV_RIGHT, 110);
 }
 
 void control_motor()
@@ -203,22 +203,22 @@ void Xem_data_read_espnow()
   }
 
   // Xem trang thai doc JoysTick Left
-  // Serial.printf("LEFT: RVX: %d, RVY: %d, SM: %d, BTA: %d, BTB: %d ",
-  //               read_data.left_JoyX_value,
-  //               read_data.left_JoyY_value,
-  //               read_data.left_JoySW_value,
-  //               read_data.left_Button_A_value,
-  //               read_data.left_Button_B_value);
+  Serial.printf("LEFT: RVX: %d, RVY: %d, SM: %d, BTA: %d, BTB: %d ",
+                read_data.left_JoyX_value,
+                read_data.left_JoyY_value,
+                read_data.left_JoySW_value,
+                read_data.left_Button_A_value,
+                read_data.left_Button_B_value);
 
-  // // Xem trang thai doc JoysTick Right
-  // Serial.printf("----- RIGH: RVX: %d, RVY: %d, SM: %d, BTA: %d, BTB: %d \n",
-  //               read_data.right_JoyX_value,
-  //               read_data.right_JoyY_value,
-  //               read_data.right_JoySW_value,
-  //               read_data.right_Button_A_value,
-  //               read_data.right_Button_B_value);
+  // Xem trang thai doc JoysTick Right
+  Serial.printf("----- RIGH: RVX: %d, RVY: %d, SM: %d, BTA: %d, BTB: %d \n",
+                read_data.right_JoyX_value,
+                read_data.right_JoyY_value,
+                read_data.right_JoySW_value,
+                read_data.right_Button_A_value,
+                read_data.right_Button_B_value);
 
-  Serial.printf("DRI: %d, SPEED: %d, DIR_Xoay: %d, XOAY: %d, DIR_LR: %d, SPEED_LR: %d, SERVO: %d \n", DIR, SPEED, DIR_xoay, SPEED_XOAY, DIR_LR, SPEED_LR, servo1_val);
+  // Serial.printf("DRI: %d, SPEED: %d, DIR_Xoay: %d, XOAY: %d, DIR_LR: %d, SPEED_LR: %d, SERVO: %d \n", DIR, SPEED, DIR_xoay, SPEED_XOAY, DIR_LR, SPEED_LR, servo1_val);
 }
 
 #endif

@@ -16,8 +16,10 @@ void Task1code_0(void *parameter)
   Setup_servo(SV_left_pin, SV_right_pin);
   while (1)
   {
+    if(START){
     Set_Servo_Position(SV_LEFT, servo1_val);
     Set_Servo_Position(SV_RIGHT, servo2_val);
+    }
     delay(10);
   }
 }
@@ -216,15 +218,15 @@ void OnDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len)
 
     // Kiem tra truc X tren JoysTick left cho sumo bobot xoay tron
     int readX_left = read_data.left_JoyX_value;
-    if (readX_left > 1900)
+    if (readX_left > 1950)
     {
       DIR_xoay = 0;
-      SPEED_XOAY = map(readX_left, 1900, 4090, 0, 1023);
+      SPEED_XOAY = map(readX_left, 1950, 4095, 0, 1023);
     }
-    else if (readX_left < 1700)
+    else if (readX_left < 1750)
     {
       DIR_xoay = 1;
-      SPEED_XOAY = map(readX_left, 1700, 0, 0, 1023);
+      SPEED_XOAY = map(readX_left, 1750, 0, 0, 1023);
     }
     else
     {
@@ -234,15 +236,15 @@ void OnDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len)
 
     // Kiem tra truc Y tren JoysTick left cho sumo bobot chay tien lui
     int readY_left = read_data.left_JoyY_value;
-    if (readY_left > 1900)
+    if (readY_left > 2050)
     {
       DIR = 1;
-      SPEED = map(readY_left, 1900, 4090, 0, 1023);
+      SPEED = map(readY_left, 2050, 4095, 0, 1023);
     }
-    else if (readY_left < 1800)
+    else if (readY_left < 1850)
     {
       DIR = 0;
-      SPEED = map(readY_left, 1800, 0, 0, 1023);
+      SPEED = map(readY_left, 1850, 0, 0, 1023);
     }
     else
     {
@@ -252,15 +254,15 @@ void OnDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len)
 
     // Kiem tra truc Y tren JoysTick right cho sumo bobot re trai hoac phai
     int readX_right = read_data.right_JoyX_value;
-    if (readX_right > 1900)
+    if (readX_right > 1950)
     {
       DIR_LR = 0;
-      SPEED_LR = map(readX_right, 1900, 4090, 0, 1023);
+      SPEED_LR = map(readX_right, 1950, 4095, 0, 1023);
     }
-    else if (readX_right < 1800)
+    else if (readX_right < 1750)
     {
       DIR_LR = 1;
-      SPEED_LR = map(readX_right, 1800, 0, 0, 1023);
+      SPEED_LR = map(readX_right, 1750, 0, 0, 1023);
     }
     else
     {
@@ -270,14 +272,15 @@ void OnDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len)
 
     // Kiem tra truc Y tren JoysTick right cho sumo bobot
     int readY_right = read_data.right_JoyY_value;
-    if (readY_right > 2100)
+    if (readY_right > 1900)
     {
-      servo1_val = map(readY_right, 2100, 4090, 0, 100);
-      servo2_val = map(readY_right, 2100, 4090, 180, 80);
+      servo1_val = map(readY_right, 1900, 4095, 0, 80);
+      servo2_val = map(readY_right, 1900, 4095, 110, 30);
     }
     else
     {
       servo1_val = 0;
+      servo2_val = 110;
     }
 
     
